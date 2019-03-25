@@ -11,7 +11,7 @@ public class back2839 {
 		int count3 =0;
 		
 		
-		while(true) { 
+		while(true) {
 			if(input%5!=0 &&input>=0) {
 				input -=3;
 				count3++;
