@@ -7,9 +7,7 @@ import java.io.InputStreamReader;
 public class back2751 {
 	static int result[];
 	
-	public static void main(String[] args) throws IOException {
-
-		
+	public static void main(String[] args) throws IOException {		
 		 BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 	     StringBuilder sb = new StringBuilder();
 	     int count= Integer.parseInt(br.readLine().trim());
