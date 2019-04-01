@@ -18,9 +18,7 @@ public class back10989 {
         BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
         for(int i=0;i<10001;i++) {
         	while(0<arr[i]--) {
-        		bw.write(Integer.toString(i)+"\n");
-        		bw.flush();
-        		
+        		bw.write(Integer.toString(i)+"\n");        		
         	}
         }
         br.close();
