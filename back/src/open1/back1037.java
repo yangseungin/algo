@@ -18,6 +18,7 @@ public class back1037 {
 
 		System.out.println(arr[0] * arr[n - 1]);
 
+
 	}
 
 }
