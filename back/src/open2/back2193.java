@@ -29,7 +29,7 @@ public class back2193 {
 		for(int i=2;i<n;i++){
 			
 			
-			
+			 
 			
 		}
 		
