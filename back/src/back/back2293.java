@@ -30,7 +30,7 @@ public class back2293 {
 					arr[j]+=arr[j-coin[i]];
 				}				
 			}
-		}		
+		}		 
 		
 		bw.write(String.valueOf(arr[k]));
 		bw.flush();
