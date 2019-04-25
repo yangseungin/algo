@@ -26,7 +26,7 @@ public class change {
 		int[] money = {1,2,5};
 		bw.write(String.valueOf(solution(n,money)));
 		bw.flush();
-		
+		 
 		
 	
 	}
