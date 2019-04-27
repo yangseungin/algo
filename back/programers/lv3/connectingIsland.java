@@ -4,6 +4,8 @@ import java.util.Arrays;
 import java.util.Comparator;
 
 public class connectingIsland {
+
+	static int[] endPoint = new int[100];
 	public static void main(String[] args) {
 
 		// 음 이문제는 연결정보 넣고 시작점에서 짧은거리 이동하면서 값더하면 될것같
@@ -15,11 +17,21 @@ public class connectingIsland {
 		System.out.println(solution(n, arr));
 
 	}
+	
+	static int find(int n){
+		if(n ==endPoint[n])
+			return n;
+		else
+			return endPoint[n]=find(endPoint[n]);	
+	}
 
 	public static int solution(int n, int[][] costs) {
 		int answer = 0;
 		int[][] arr = new int[n][n];
 		
+		for(int i=0;i<n;i++){
+			endPoint[i]=i;
+		}
 		//일단 costs 오름차순으로 정
 		Arrays.sort(costs,new Comparator<int[]>() {
 
@@ -33,17 +45,24 @@ public class connectingIsland {
 		for(int i=0;i<costs.length;i++){
 			System.out.println(costs[i][0]+" / "+costs[i][1]+" / "+costs[i][2]);
 		}
-		for(int i=0;i<costs.length;i++){
-			int start=costs[i][0];
-			int end= costs[i][1];
+		
+		
+		
+		
+		
+		for(int i=0;i<costs.length;i++){			
+			int start=find(costs[i][0]);
+			int end= find(costs[i][1]);
 			int cost= costs[i][2];
+			
+			if(start!=end){
+				endPoint[start]=end;
+				answer+=cost;
+			}
+			
 
-			arr[start][end]=cost;
-			arr[end][start]=cost;
 			
 		}
-		boolean[] checked=new boolean[n];
-		System.out.println("--------------");
 		
 		
 		
