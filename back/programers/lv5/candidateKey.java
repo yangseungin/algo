@@ -31,6 +31,10 @@ public class candidateKey {
 		int rowSize= relation.length;
 		int colSize= relation[0].length;
 		
+		for(int i=0;i<rowSize;i++){
+			
+		}
+		
 		
 		
 		
