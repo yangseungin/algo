@@ -10,6 +10,9 @@ public class RoomCount {
 	 *	뭔가 돌다 다시 자기자리에왔을떄체크를 하면 될거 같은데 음..
 	 	한번 간적있던 점에 방문하면 도형이 하나씩 추가됨 그러나 이동으로인해 그어진선이 기존에 있떤 선이면 안됨  오오.. 가능할삘인
 	 	점과점사이를 쪼개어 반토막씩 내고 그가운데점이 체크되면 지나온선으로 해서 구하면 될거 같음 굿
+	 	
+	 	기존에 방문했던점에서 방문했떤점으로 이동인지도 체크해야함
+	 	메모리 초 런타임에러 나는경우도있어서 용량처리를 어케해야할지 수정해야
 	 * 	
 		
 		*/
@@ -24,9 +27,23 @@ public class RoomCount {
 	
 	public static int solution(int[] arrows){
 		int answer=0;
+		int[][] location = new int[arrows.length][arrows.length];		//왼쪽이나 아래쪽으로가서 시작부터 음수가될경우 어떻게 처리할것인가..?
+		numX=arrows.length/2;
+		numY=arrows.length/2;
+		System.out.println(numX+"     /      "+numY);
+		location[numX][numY]++;
 		for(int i=0;i<arrows.length;i++){
-			move(arrows[i]);
+			move(arrows[i],location);
 		}
+		for(int i=0;i<arrows.length;i++){
+			for(int j=0;j<arrows.length;j++){
+				System.out.print(location[i][j]+" ");
+				if(location[i][j]>1)
+					answer++;
+			}
+			System.out.println();
+		}
+		
 		
 		
 		System.out.println("x,y : "+numX+" , "+numY);
@@ -36,7 +53,7 @@ public class RoomCount {
 		
 		return answer;
 	}
-	public static void move(int arrow){
+	public static void move(int arrow,int[][] location){
 		if(arrow==0){
 			numY++;
 		}else if(arrow==1){
@@ -58,6 +75,7 @@ public class RoomCount {
 			numX--;
 			numY++;
 		}
+		location[numX][numY]++;
 		
 		
 	}
