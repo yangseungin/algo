@@ -1,5 +1,7 @@
 package lv5;
 
+import java.util.Arrays;
+
 public class RoomCount {
 	static int numX=0;
 	static int numY=0;
@@ -27,22 +29,48 @@ public class RoomCount {
 	
 	public static int solution(int[] arrows){
 		int answer=0;
-		int[][] location = new int[arrows.length][arrows.length];		//왼쪽이나 아래쪽으로가서 시작부터 음수가될경우 어떻게 처리할것인가..?
-		numX=arrows.length/2;
-		numY=arrows.length/2;
+		int[] direction=new int[8];
+		
+		for(int i=0;i<arrows.length;i++){
+			direction[arrows[i]]++;
+		}
+		for(int i=0;i<8;i++){
+			System.out.println(direction[i]);
+		}
+		
+		int maxHeight=direction[0]+direction[1]+direction[7];
+		int maxLow=direction[3]+direction[4]+direction[5];
+		int maxRight=direction[1]+direction[2]+direction[3];
+		int maxLeft=direction[5]+direction[6]+direction[7];
+		
+		System.out.println(maxHeight+" / "+maxLow+" / "+maxRight+" / "+maxLeft);
+		int[][] location = new int [maxRight+maxLeft+1][maxHeight+maxLow+1];
+		numX=maxLeft;
+		numY=maxLow;
+		
+		
+		
 		System.out.println(numX+"     /      "+numY);
-		location[numX][numY]++;
+		
+		//시작
+		location[numX][numY]=4;
+		
+		//움직임
 		for(int i=0;i<arrows.length;i++){
 			move(arrows[i],location);
+			//print(maxHeight,maxLow,maxRight,maxLeft,location,answer);
 		}
-		for(int i=0;i<arrows.length;i++){
-			for(int j=0;j<arrows.length;j++){
-				System.out.print(location[i][j]+" ");
+		
+		
+		for(int i=maxHeight+maxLow;i>0;i--){
+			for(int j=0;j<maxLeft+maxRight;j++){
+				System.out.print(location[j][i]+" ");
 				if(location[i][j]>1)
 					answer++;
 			}
 			System.out.println();
 		}
+		
 		
 		
 		
@@ -52,6 +80,20 @@ public class RoomCount {
 		
 		
 		return answer;
+	}
+	public static void print(int maxHeight,int maxLow,int maxRight,int maxLeft, int[][] location,int answer){
+		
+		for(int i=maxHeight+maxLow;i>0;i--){
+			for(int j=0;j<maxLeft+maxRight;j++){
+				System.out.print(location[j][i]+" ");
+				if(location[i][j]>1)
+					answer++;
+			}
+			System.out.println();
+		}
+		System.out.println();
+		System.out.println("--------------------------------");
+		
 	}
 	public static void move(int arrow,int[][] location){
 		if(arrow==0){
@@ -66,7 +108,7 @@ public class RoomCount {
 			numY--;
 		}else if(arrow==4){
 			numY--;
-		}else if(arrow==5){
+		}else if(arrow==5){	
 			numX--;
 			numY--;
 		}else if(arrow==6){
