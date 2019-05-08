@@ -11,6 +11,8 @@ public class back9095 {
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 		BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
 		
+		/*DP문제 규칙찾아보면 그전3개더한게 그다음*/
+		
 		int n=Integer.parseInt(br.readLine());
 		int max=0;
 		int[] input = new int[n+1];
