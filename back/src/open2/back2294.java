@@ -13,7 +13,7 @@ public class back2294 {
 		
 		int n=Integer.parseInt(br.readLine());
 		
-		bw.write(String.valueOf(n));;
+		bw.write(String.valueOf(n));
 		bw.flush();
 	}
 

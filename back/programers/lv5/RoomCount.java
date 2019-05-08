@@ -44,7 +44,7 @@ public class RoomCount {
 		int maxLeft=direction[5]+direction[6]+direction[7];
 		
 		System.out.println(maxHeight+" / "+maxLow+" / "+maxRight+" / "+maxLeft);
-		int[][] location = new int [maxRight+maxLeft+1][maxHeight+maxLow+1];
+		int[][] location = new int [maxHeight+maxLow+1][maxRight+maxLeft+1];
 		numX=maxLeft;
 		numY=maxLow;
 		
@@ -58,9 +58,9 @@ public class RoomCount {
 		//움직임
 		for(int i=0;i<arrows.length;i++){
 			move(arrows[i],location);
-			//print(maxHeight,maxLow,maxRight,maxLeft,location,answer);
+			//print(maxHeight,maxLow,maxRight,maxLeft,location,arrows[i]);
 		}
-		
+		//이전에 방문한적이 있는선분이란걸 체크하는걸 넣어야함.
 		
 		for(int i=maxHeight+maxLow;i>0;i--){
 			for(int j=0;j<maxLeft+maxRight;j++){
@@ -81,13 +81,13 @@ public class RoomCount {
 		
 		return answer;
 	}
-	public static void print(int maxHeight,int maxLow,int maxRight,int maxLeft, int[][] location,int answer){
+	public static void print(int maxHeight,int maxLow,int maxRight,int maxLeft, int[][] location,int input){
 		
 		for(int i=maxHeight+maxLow;i>0;i--){
 			for(int j=0;j<maxLeft+maxRight;j++){
 				System.out.print(location[j][i]+" ");
-				if(location[i][j]>1)
-					answer++;
+				//if(location[i][j]>1)
+					//answer++;
 			}
 			System.out.println();
 		}

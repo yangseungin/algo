@@ -21,7 +21,8 @@ public class EditTerrain {
 
 		for (int i = 0; i < size; i++) {
 			for (int j = 0; j < size; j++) {
-			
+				long mul = land[i][j] - middle > 0 ? Q : -P;
+				value += (land[i][j] - middle) * mul;
 
 			}
 		}
@@ -48,6 +49,10 @@ public class EditTerrain {
 				start = middle + 1;
 			}
 
+		}
+		for (int i = middle - 1; i <= middle + 1; i++) {
+			long temp = height(land, i, P, Q);
+			answer = answer > temp ? temp : answer;
 		}
 
 		return answer;
