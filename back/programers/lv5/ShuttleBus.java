@@ -1,6 +1,10 @@
 package lv5;
 
+import java.text.DateFormat;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
 
 public class ShuttleBus {
 	public static void main(String[] args) {
@@ -24,10 +28,28 @@ public class ShuttleBus {
 	}
 	public static String solution(int n, int t, int m, String[] timetable){
 		String str="";
-		SimpleDateFormat format = new SimpleDateFormat();
-		for(int i=0;i<timetable.length;i++){
-			System.out.println(timetable[i]);
-		}
+		DateFormat df = new SimpleDateFormat("HH:mm");
+	    try {
+	        Date date;
+	        Calendar cal;
+			cal = Calendar.getInstance();
+			
+			for(int i=0;i<timetable.length;i++){  
+				System.out.println(timetable[i]);
+				date = df.parse(timetable[i]);
+
+		        // 날짜 더하기
+		        cal.setTime(date);
+		        cal.add(Calendar.HOUR, 1);
+		        cal.add(Calendar.MINUTE, 2);
+		         
+		        System.err.println(df.format(cal.getTime()));
+			
+			}
+	         
+	    } catch (ParseException e) {
+	        e.printStackTrace();
+	    }
 		
 		
 		
