@@ -1,11 +1,6 @@
 package lv5;
 
-import java.text.DateFormat;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.util.Arrays;
-import java.util.Calendar;
-import java.util.Date;
 
 public class ShuttleBus {
 	public static void main(String[] args) {
@@ -15,33 +10,85 @@ public class ShuttleBus {
 		 * 00:01~23:59
 		 * 
 		 * 09:00에 도착한 셔틀에 자리있으면 09:00에 줄선 사람도 탈수있 셔틀은 09시부터
+		 * 
+		 * 
+		 * 1. 시간순으로 sort
+		 * 2. 운행시간마다 탈수있는 최대인원을 체크하여 빼고  
+		 * 3. 다음 버스가없으면 버스시간 정하
+		 * 
+		 * 
+		 * 
 		 */
 
-		int n = 2, t = 10, m = 2;
 		String[] timetable = { "09:10", "09:09", "08:00" };
-		System.out.println("test addtime: " + addTime("09:00", 10));
-		System.out.println(solution(n, t, m, timetable));
+		//System.out.println(solution(2, 10, 2, timetable));
+		//System.out.println(solution(1, 1, 5, new String[]{"08:00", "08:01", "08:02", "08:03"}));
+		//System.out.println(solution(2, 1, 2, new String[]{"09:00", "09:00", "09:00", "09:00"}));
+		//System.out.println(solution(1, 1, 5, new String[]{"00:01", "00:01", "00:01", "00:01", "00:01"}));
+		System.out.println(solution(1, 1, 1, new String[]{"23:59"}));
 
 	}
 
 	public static String solution(int n, int t, int m, String[] timetable) {
-		String str = "";
-		String[] arrivalTime = new String[n];
-
-		System.out.println("--------arrivalTime");
-		// 도착시간 배열
-		for (int i = 0; i < n; i++) {
-			arrivalTime[i] = addTime("09:00", t * i);
-			System.out.println(arrivalTime[i]);
-		}
+		String answer = "";
+		String firstBus="09:00";
+		String lastBus=addTime(firstBus, t *(n-1));
 
 		Arrays.sort(timetable);
-		System.out.println("--------timetable");
-		for (int i = 0; i < timetable.length; i++) {
-			System.out.println(timetable[i]);
-		}
+		
+		String arriveBus="";//현재온 버
+		int depart=0;//처리된 사람
+		int boarderCount=0; //매 버스당 탑승객 카운트
+		
+		//버스횟수만큼 반복
+		for (int i = 0; i <n; i++) {
+			System.out.println((i+1)+"번째 버스");
+			 
+			boarderCount=0;
+			arriveBus=addTime(firstBus, t * i);			
 
-		return str;
+			//처리됬던사람이후부터 전체사람탐
+			for(int j=depart;j<timetable.length;j++){
+				
+				//현재버스시간보다 빨리왔거나 같은시간에왔고 버스에 자리가있으	
+				if(getTime(arriveBus)>=getTime(timetable[j]) && boarderCount<m){
+					answer=addTime(timetable[depart],-1);//탑승가능자보다 1분빨리도착
+					depart++;
+					boarderCount++;
+					System.out.println("남은자리: "+(m-boarderCount)+"처리안된 사람수: "+(timetable.length-depart));
+					
+					//자리여유있고 마지막탑승이되면지금버스시간으로 나감
+					if(i==n-1&& j==timetable.length-1&& boarderCount<m){
+						answer=lastBus;				
+					}
+					
+				}else{
+					// 위에서 마지막 버스까지가도 자리가없는경우이니 마지막에 탄사람보다 1분빨리옴
+					if(i==n-1 && depart>=1){
+						answer=addTime(timetable[depart-1],-1);
+						
+					}				
+				}									
+			}
+		}
+		
+		//막차타도 자리가 남으면 막차 탄
+		if(answer.equals("")){
+			answer=lastBus;
+		}else if(getTime(answer)>getTime(lastBus)){
+			answer=lastBus;
+		}
+			
+		
+
+		return answer;
+	}
+	public static int getTime(String time){
+		String[] arr = time.split(":");
+		int hour = Integer.parseInt(arr[0]);
+		int minute = Integer.parseInt(arr[1]);
+		
+		return hour*60+minute;		
 	}
 
 	public static String addTime(String time, int addtime) {
