@@ -32,7 +32,7 @@ public class Budget {
 		Arrays.sort(budgets);
 		max=100000;
 		
-		while(true){
+		while(min<=max){
 			sum=0;
 			mid=(min+max)/2;
 			
@@ -59,6 +59,7 @@ public class Budget {
 
 			
 		}
+		return max;
 		
 		
 		
