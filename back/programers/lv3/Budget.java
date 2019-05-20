@@ -15,46 +15,29 @@ public class Budget {
 	}
 	public static int solution(int[] budgets,int M){
 		int min=0;
-		int max=1;
+		int max=0;
 		int sum=0,mid=0;	
 		
 		
-		//예산범위 내면 가장큰값 리
-		for(int i=0;i<budgets.length;i++){
-			if(max<budgets[i])
-				max=budgets[i];
-			sum+=budgets[i];
-		}
-		if(sum<=M){
-			return max;
-		}
+		
 
 		Arrays.sort(budgets);
-		max=100000;
+		max=budgets[budgets.length-1];
 		
 		while(min<=max){
 			sum=0;
 			mid=(min+max)/2;
 			
-			if(max-min<=1)
-				return min;
 			
 			for(int i=0;i<budgets.length;i++){
-				if(budgets[i]<=mid)
-					sum+=budgets[i];
-				else{
-					//mid보다커지면 나머지걍 중간값으로 더해버리고 치
-					sum+=mid*(budgets.length-i);
-					break;
-				}
-				
+				sum = budgets[i]>mid?sum+mid:sum+budgets[i];
 			}
-
+			
 			
 			if(sum>M)
-				max=mid;
+				max=mid-1;
 			else 
-				min=mid;
+				min=mid+1;
 			System.out.println("max: "+max+" min: "+min+" mid: "+mid);
 
 			
