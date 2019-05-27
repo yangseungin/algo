@@ -6,11 +6,9 @@ import java.util.Comparator;
 
 public class JustNowSong {
 	public static void main(String[] args) {
-		System.out.println(solution("ABCDEFG", new String[] { "12:00,12:14,HELLO,CDEFGAB", "13:00,13:05,WORLD,ABCDEF" }));
-		// System.out.println(solution("CC#BCC#BCC#BCC#B", new String[]{
-		// "03:00,03:30,FOO,CC#B", "04:00,04:08,BAR,CC#BCC#BCC#B" }));
-		// System.out.println(solution("ABC", new String[]{
-		// "12:00,12:14,HELLO,C#DEFGAB", "13:00,13:05,WORLD,ABCDEF" }));
+		//System.out.println(solution("ABCDEFG", new String[] { "12:00,12:14,HELLO,CDEFGAB", "13:00,13:05,WORLD,ABCDEF" }));
+		// System.out.println(solution("CC#BCC#BCC#BCC#B", new String[]{"03:00,03:30,FOO,CC#B", "04:00,04:08,BAR,CC#BCC#BCC#B" }));
+		 System.out.println(solution("ABC", new String[]{ "12:00,12:14,HELLO,C#DEFGAB", "13:00,13:05,WORLD,ABCDEF" }));
 
 	}
 
@@ -33,6 +31,7 @@ public class JustNowSong {
 			for (int j = 0; j < musicLength; j++) {
 				playedMusic += temp[3].charAt(j % temp[3].length());
 			}
+			System.out.println("!"+playedMusic);
 
 			//음악찾으면 음악리스트에 곡 추
 			if (playedMusic.contains(m)) {
@@ -50,9 +49,9 @@ public class JustNowSong {
 				int len2 = getTime(arr2[0], arr2[1]);
 				
 				if(len1<len2)
-					return -1;
-				else if(len1>len2)
 					return 1;
+				else if(len1>len2)
+					return -1;
 				else 
 					return 0;
 				
@@ -74,7 +73,7 @@ public class JustNowSong {
 		temp = end.split(":");
 		int endTime = Integer.parseInt(temp[0]) * 60 + Integer.parseInt(temp[1]);
 
-		return endTime - startTime;
+		return Math.abs(endTime - startTime);
 	}
 
 	public static String replaceNote(String str) {
