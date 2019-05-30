@@ -15,7 +15,8 @@ public class JustNowSong {
 	public static String solution(String m, String[] musicinfos) {
 		ArrayList<String> musicList = new ArrayList<String>();
 
-		String answer = "";
+		String answer = "(None)";
+		int time=0;
 
 		//#문자 치환
 		m = replaceNote(m);
@@ -25,44 +26,30 @@ public class JustNowSong {
 			String[] temp = musicinfos[i].split(",");
 			int musicLength = getTime(temp[0], temp[1]); //음악길이 
 
-			temp[3] = replaceNote(temp[3]); // 재생되는곡도  #치
+			temp[3] = replaceNote(temp[3]); // 재생되는곡도  #치환 
 			String playedMusic = "";
-			//음악길이만큼 반복해서 재생된음악계
-			for (int j = 0; j < musicLength; j++) {
-				playedMusic += temp[3].charAt(j % temp[3].length());
+			
+			if(musicLength>time){
+				for (int j = 0; j < musicLength; j++) {
+					playedMusic += temp[3].charAt(j % temp[3].length());
+				}
+				if (playedMusic.contains(m)) {
+					answer=temp[2];
+					time=musicLength;
+				}
+				
+				
 			}
+			
+			
+			//음악길이만큼 반복해서 재생된음악계
 			System.out.println("!"+playedMusic);
 
 			//음악찾으면 음악리스트에 곡 추
-			if (playedMusic.contains(m)) {
-				musicList.add(musicinfos[i]);
-			}
+			
 
 		}
-		//음악 긴순으로 정
-		Collections.sort(musicList, new Comparator<String>() {
-			@Override
-			public int compare(String o1, String o2) {
-				String arr[] = o1.split(",");
-				int len1 = getTime(arr[0], arr[1]);
-				String arr2[] = o2.split(",");
-				int len2 = getTime(arr2[0], arr2[1]);
-				
-				if(len1<len2)
-					return 1;
-				else if(len1>len2)
-					return -1;
-				else 
-					return 0;
-				
-			}
 
-		});
-
-		if (musicList.size() > 0) {
-			answer = musicList.get(0).split(",")[2];
-		} else
-			answer = "(none)";
 
 		return answer;
 	}
