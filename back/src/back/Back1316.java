@@ -27,9 +27,7 @@ public class Back1316 {
 		boolean[] alpabet = new boolean[26];
         int length = input.length();
         
-        int i;
-        System.out.println(alpabet[0]);
-        for(i=0; i<length; i++) {
+        for(int i=0; i<length; i++) {
             char temp = input.charAt(i);
             if(alpabet[temp-'a']) {
                 return false;
@@ -40,10 +38,6 @@ public class Back1316 {
                 
             }
         }
-
-
-		
-			
 		
 		return true;
 	}
