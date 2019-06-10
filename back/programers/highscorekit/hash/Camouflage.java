@@ -1,8 +1,6 @@
 package highscorekit.hash;
 
 import java.util.HashMap;
-import java.util.Map.Entry;
-import java.util.Set;
 
 public class Camouflage {
 	public static void main(String[] args) {
