@@ -12,7 +12,6 @@ public class StealPipe {
 	public static int solution(String arrangement){
 		int answer=0;
 		arrangement=arrangement.replace("()", "|");
-		System.out.println(arrangement);
 		int count=0;
 		for(int i=0;i<arrangement.length();i++){
 			if(arrangement.charAt(i)=='(')
@@ -20,16 +19,9 @@ public class StealPipe {
 			else if(arrangement.charAt(i)==')'){
 				count--;
 				answer++;
-			}else{
-				answer+=count;
-			}
-				
-			
-			
+			}else
+				answer+=count;	
 		}
-		
-		
-		
 		return answer;		
 	}
 
