@@ -27,7 +27,7 @@ public class TruckPassingBridge {
 		after.offer(before.poll());
 		answer++;
 		while (!after.isEmpty()) {
-			for (Truck truck : after) {
+			for (Truck truck : after) { 
 				truck.time--;
 			}
 
