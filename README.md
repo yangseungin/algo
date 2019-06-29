@@ -5,7 +5,7 @@
 	back/programmers-> 프로그래머스 스터디문제들
 
 ## 내용정리
-  1. [AAAA](https://google.com, "설명") 
+  1. [DP](https://google.com, "설명") 
   2. B
   3. C
   4. D
