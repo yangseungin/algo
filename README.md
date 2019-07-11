@@ -7,6 +7,6 @@
 ## 내용정리
   1. [DP](https://google.com, "설명") 
   2. [DFS&BFS](https://google.com, "설명") 
-  3. C
+  3. C 
   4. D
 
