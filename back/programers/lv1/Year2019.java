@@ -1,6 +1,6 @@
 package lv1;
 
-public class year2019 {
+public class Year2019 {
 	public static void main(String[] args) {
 		System.out.println(solution(5,24));
 		
