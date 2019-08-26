@@ -13,7 +13,7 @@ public class LetterCombinationsOfaPhoneNumber {
 	public static List<String> letterCombinations(String digits) {
 		List<String> list = new ArrayList<>();
 
-		if (digits == null || digits.length() == 0) {
+		if (digits == null || digits.equals("")) {
 			return list;
 		}
 
@@ -25,7 +25,7 @@ public class LetterCombinationsOfaPhoneNumber {
 		map.put('4', new char[] { 'g', 'h', 'i' });
 		map.put('5', new char[] { 'j', 'k', 'l' });
 		map.put('6', new char[] { 'm', 'n', 'o' });
-		map.put('&', new char[] { 'p', 'q', 'r', 's' });
+		map.put('7', new char[] { 'p', 'q', 'r', 's' });
 		map.put('8', new char[] { 't', 'u', 'v' });
 		map.put('9', new char[] { 'w', 'x', 'y', 'z' });
 
@@ -35,8 +35,7 @@ public class LetterCombinationsOfaPhoneNumber {
 		return list;
 	}
 
-	public static void combinationLetter(String digits, StringBuilder sb, Map<Character, char[]> map,
-			List<String> list) {
+	public static void combinationLetter(String digits, StringBuilder sb, Map<Character, char[]> map, List<String> list) {
 		if (sb.length() == digits.length()) {
 			list.add(sb.toString());
 			return;
