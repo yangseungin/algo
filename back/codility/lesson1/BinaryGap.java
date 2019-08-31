@@ -1,4 +1,4 @@
-package codility.test;
+package lesson1;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -24,7 +24,6 @@ public class BinaryGap {
 			list.remove(list.size() - 1);
 
 		}
-		System.out.println(list.toString());
 		int result = 0;
 		int tmpCount = 0;
 		for (int i = 0; i < list.size(); i++) {
