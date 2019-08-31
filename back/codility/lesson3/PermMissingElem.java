@@ -7,12 +7,12 @@ public class PermMissingElem {
 	}
 
 	public static int solution(int[] A) {
-		double sum = 0;
+		long sum = 0;
 
 		for (int num : A) {
 			sum += num;
 		}
 
-		return (int)((double)(A.length + 1) * (A.length + 2) / 2 - sum);
+		return (int) ((long) (A.length + 1) * (A.length + 2) / 2 - sum);
 	}
 }
