@@ -14,7 +14,6 @@ public class BestTimetoBuyandSellStock2 {
 			if(prices[i+1]>prices[i]){
 				result+=prices[i+1]-prices[i];
 			}
-			
 		}		
 		
 		return result;
