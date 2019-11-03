@@ -11,24 +11,26 @@ public class LowestCommonAncestorofaBinarySearchTree {
 		TreeNode t7 = new TreeNode(8);
 		TreeNode t8 = new TreeNode(7);
 		TreeNode t9 = new TreeNode(9);
-		t1.left=t2;
-		t1.left.left=t3;
-		t1.left.right=t4;
-		t1.left.right.left=t5;
-		t1.left.right.right=t6;
-		t1.right=t7;
-		t1.right.left=t8;
-		t1.right.right=t9;
-		
+		t1.left = t2;
+		t1.left.left = t3;
+		t1.left.right = t4;
+		t1.left.right.left = t5;
+		t1.left.right.right = t6;
+		t1.right = t7;
+		t1.right.left = t8;
+		t1.right.right = t9;
+
 		System.out.println(lowestCommonAncestor(t1, t2, t7));
 	}
 
 	public static TreeNode lowestCommonAncestor(TreeNode root, TreeNode p, TreeNode q) {
-		TreeNode t1 = new TreeNode(1);
-		
-		
-		
-		return t1;
+		if (p.val > root.val && q.val > root.val) {
+			return lowestCommonAncestor(root.right, p, q);
+		} else if (p.val < root.val && q.val < root.val) {
+			return lowestCommonAncestor(root.left, p, q);
+		} else {
+			return root;
+		}
 	}
 
 	public static class TreeNode {
