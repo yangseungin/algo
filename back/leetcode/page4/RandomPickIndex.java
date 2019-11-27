@@ -6,7 +6,7 @@ import java.util.Map;
 import java.util.Random;
 
 public class RandomPickIndex {
-	static Map<Integer, LinkedList<Integer>> map = new HashMap<>();
+	Map<Integer, LinkedList<Integer>> map = new HashMap<>();
 
 	public static void main(String[] args) {
 		RandomPickIndex rpi = new RandomPickIndex(new int[] { 1, 2, 3, 3, 3 });
@@ -27,7 +27,7 @@ public class RandomPickIndex {
 		}
 	}
 
-	public static int pick(int target) {
+	public int pick(int target) {
 		Random random = new Random();
 		LinkedList<Integer> l = map.get(target);
 		return l.get(random.nextInt(l.size()));
