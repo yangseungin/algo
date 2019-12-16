@@ -8,6 +8,9 @@ public class DiagonalTraverse {
 	}
 
 	public static int[] findDiagonalOrder(int[][] matrix) {
+		if(matrix.length==0){
+			return new int[0];
+		}
 		int row = 0, col = 0;
 		int m = matrix.length;
 		int n = matrix[0].length;
