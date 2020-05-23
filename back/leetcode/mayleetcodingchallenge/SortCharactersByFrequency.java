@@ -26,7 +26,6 @@ public class SortCharactersByFrequency {
 				result.append(cur);
 			}
 		}
-
 		return result.toString();
 	}
 }
