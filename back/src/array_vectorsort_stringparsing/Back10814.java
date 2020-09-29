@@ -1,4 +1,4 @@
-package back;
+package array_vectorsort_stringparsing;
 
 import java.util.Arrays;
 import java.util.Comparator;
