@@ -1,4 +1,4 @@
-package back;
+package stack;
 
 import java.util.Scanner;
 public class Back10799 {
