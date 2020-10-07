@@ -1,4 +1,4 @@
-package back;
+package deque;
 
 import java.util.ArrayList;
 import java.util.Scanner;
