@@ -1,4 +1,4 @@
-package challenges1;
+package challenges1.chall2;
 
 import java.util.Arrays;
 
