@@ -1,4 +1,4 @@
-package challenges.chall3;
+package challenges1.chall3;
 
 import java.util.*;
 
@@ -6,6 +6,7 @@ public class Q3 {
     static Set<int[]> set;
 
     public static void main(String[] args) {
+        //테스트케이스만 통과, 시간초과
         System.out.println(solution(new int[]{5,2,3,3,5,3}));
 //        System.out.println(solution(new int[]{0,3,3,0,7,2,0,2,2,0}));
     }
@@ -18,16 +19,16 @@ public class Q3 {
 
             set = new HashSet<>();
             combin(a, new boolean[a.length], 0, a.length, i );
-            System.out.println("--------");
+//            System.out.println("--------");
             Iterator<int[]> iterator = set.iterator();
             boolean check=true;
             while (iterator.hasNext()) {
                 int[] next = iterator.next();
                 int idx=0;
                 for (int j = 0; j < i/2; j++) {
-//                    System.out.println("왼:"+next[idx]+" / 오: "+next[idx+1]);
+//                    System.out.println("왼:"+next[idx]+" / 오: "+next[idx+1]+" / i: "+i+" / j: "+j);
                     if(next[idx]==next[idx+1]){
-                        System.out.println("같음");
+//                        System.out.println("같음");
                         check=false;
                     }
                     idx+=2;
@@ -35,14 +36,9 @@ public class Q3 {
                 if(check){
                     answer=Math.max(answer,next.length);
                 }
-
-                System.out.println(Arrays.toString(next));
+//                System.out.println(Arrays.toString(next));
             }
-
-
         }
-
-        System.out.println("END");
 
         return answer;
     }

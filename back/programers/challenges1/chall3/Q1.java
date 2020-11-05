@@ -1,4 +1,4 @@
-package challenges.chall3;
+package challenges1.chall3;
 
 public class Q1 {
     public static void main(String[] args) {
