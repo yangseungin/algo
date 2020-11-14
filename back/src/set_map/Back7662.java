@@ -9,7 +9,7 @@ import java.util.TreeMap;
 public class Back7662 {
     static TreeMap<Long, Long> map;
 
-    public static void main(String[] args) throws IOException, IOException {
+    public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         StringTokenizer st = new StringTokenizer(br.readLine());
         StringBuilder sb = new StringBuilder();
@@ -48,7 +48,7 @@ public class Back7662 {
             if (map.isEmpty())
                 sb.append("EMPTY\n");
             else
-                sb.append(map.lastKey() + " " + map.firstKey());
+                sb.append(map.lastKey() + " " + map.firstKey() + "\n");
         }
         System.out.println(sb.toString());
     }
