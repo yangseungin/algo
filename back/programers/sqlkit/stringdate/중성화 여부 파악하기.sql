@@ -1,4 +1,4 @@
--- https://programmers.co.kr/learn/courses/30/lessons/59047
-SELECT ANIMAL_ID, NAME from ANIMAL_INS
-where ANIMAL_TYPE = "Dog" and name like "%EL%"
-order by name asc
+-- https://programmers.co.kr/learn/courses/30/lessons/59409
+SELECT ANIMAL_ID, NAME, if((SEX_UPON_INTAKE like "%Neutered%" or SEX_UPON_INTAKE like "%Spayed%"),"O","X")
+from ANIMAL_INS
+order by ANIMAL_ID asc
