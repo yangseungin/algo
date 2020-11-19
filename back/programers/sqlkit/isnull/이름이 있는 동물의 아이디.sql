@@ -1,2 +1,2 @@
--- https://programmers.co.kr/learn/courses/30/lessons/59040
-SELECT ANIMAL_TYPE, COUNT(ANIMAL_TYPE) from ANIMAL_INS group by ANIMAL_TYPE
+-- https://programmers.co.kr/learn/courses/30/lessons/59407
+SELECT animal_id from animal_ins where name is not null;

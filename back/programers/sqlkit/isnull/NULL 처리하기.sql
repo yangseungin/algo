@@ -1,2 +1,2 @@
--- https://programmers.co.kr/learn/courses/30/lessons/59040
-SELECT ANIMAL_TYPE, COUNT(ANIMAL_TYPE) from ANIMAL_INS group by ANIMAL_TYPE
+-- https://programmers.co.kr/learn/courses/30/lessons/59410
+SELECT animal_type, ifnull(name,"No name"), sex_upon_intake from animal_ins
