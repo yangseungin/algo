@@ -6,9 +6,8 @@ import java.io.InputStreamReader;
 import java.util.Arrays;
 import java.util.StringTokenizer;
 
-public class Back15655 {
+public class Back15656 {
     static int[] arr, input;
-    static boolean[] visited;
     static StringBuilder sb;
 
     public static void main(String[] args) throws IOException {
@@ -17,7 +16,6 @@ public class Back15655 {
         int N = Integer.parseInt(st.nextToken()), M = Integer.parseInt(st.nextToken());
 
         arr = new int[M];
-        visited = new boolean[N];
         input = new int[N];
         st = new StringTokenizer(br.readLine());
         for (int i = 0; i < N; i++)
@@ -37,12 +35,8 @@ public class Back15655 {
             return;
         }
         for (int i = 0; i < N; i++) {
-            if (!visited[i]) {
-                visited[i] = true;
-                arr[depth] = input[i];
-                dfs(N, M, depth + 1);
-                visited[i] = false;
-            }
+            arr[depth] = input[i];
+            dfs(N, M, depth + 1);
         }
     }
 }
