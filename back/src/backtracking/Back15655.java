@@ -8,7 +8,6 @@ import java.util.StringTokenizer;
 
 public class Back15655 {
     static int[] arr, input;
-    static boolean[] visited;
     static StringBuilder sb;
 
     public static void main(String[] args) throws IOException {
@@ -17,32 +16,27 @@ public class Back15655 {
         int N = Integer.parseInt(st.nextToken()), M = Integer.parseInt(st.nextToken());
 
         arr = new int[M];
-        visited = new boolean[N];
         input = new int[N];
         st = new StringTokenizer(br.readLine());
         for (int i = 0; i < N; i++)
             input[i] = Integer.parseInt(st.nextToken());
         Arrays.sort(input);
         sb = new StringBuilder();
-        dfs(N, M, 0, 1);
+        dfs(N, M, 0);
         System.out.println(sb);
 
     }
 
-    private static void dfs(int N, int M, int depth, int idx) {
+    private static void dfs(int N, int M, int depth) {
         if (depth == M) {
             for (int num : arr)
                 sb.append(num + " ");
             sb.append("\n");
             return;
         }
-        for (int i = idx - 1; i < N; i++) {
-            if (!visited[i]) {
-                visited[i] = true;
-                arr[depth] = input[i];
-                dfs(N, M, depth + 1, i + 1);
-                visited[i] = false;
-            }
+        for (int i = 0; i < N; i++) {
+            arr[depth] = input[i];
+            dfs(N, M, depth + 1);
         }
     }
 }
