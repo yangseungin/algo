@@ -13,16 +13,11 @@ public class B {
             int n = Integer.parseInt(br.readLine()); // len
             String str = br.readLine();
             boolean flag = false;
-            for (int i = 0; i < n; i++) {
-                for (int j = i; j <= n; j++) {
-                    System.out.println(str.substring(0, i) +" / "+ str.substring(i, j)+" / "+str.substring(j, n)+" / "+(str.substring(0, i) + str.substring(j, n)));
-                    if (str.substring(0, i).equals("2020") || str.substring(i, j).equals("2020") || str.substring(j, n).equals("2020") || (str.substring(0, i) + str.substring(j, n)).equals("2020")) {
-                        flag = true;
-                        break;
-                    }
-                }
-                if(flag)
-                    break;
+            for (int i = 0; i <= 4; i++) {
+                int sec = 4 - i;
+                if ((str.substring(0, i) + str.substring(n - sec)).equals("2020"))
+                    flag = true;
+
             }
             if (flag)
                 sb.append("YES\n");
