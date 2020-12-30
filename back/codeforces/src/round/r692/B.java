@@ -1,4 +1,4 @@
-package Round692;
+package round.r692;
 
 import java.io.BufferedReader;
 import java.io.IOException;
