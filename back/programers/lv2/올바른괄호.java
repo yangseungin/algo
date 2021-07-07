@@ -15,7 +15,7 @@ public class 올바른괄호 {
             else {
                 if (stack.isEmpty())
                     return false;
-                elses
+                else
                     stack.pop();
             }
         }
