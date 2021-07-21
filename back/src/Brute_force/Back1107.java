@@ -1,50 +1,47 @@
 package Brute_force;
 
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
-import java.util.StringTokenizer;
+import java.util.Scanner;
 
-public class Back1107 { //문제있음 다시해야함
-    public static void main(String[] args) throws IOException {
-        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-        String num = br.readLine();
-        int N = Integer.parseInt(num);
-        int M = Integer.parseInt(br.readLine());
-        StringTokenizer st = new StringTokenizer(br.readLine());
-        int[] targetNum = new int[6];
-        for (int i = 0; i < num.length(); i++)
-            targetNum[i] = num.charAt(i) - '0';
+public class Back1107 {
+    static boolean[] broken = new boolean[10];
 
-        boolean[] broken = new boolean[10];
-        for (int i = 0; i < M; i++)
-            broken[Integer.parseInt(st.nextToken())] = true;
-
-        int min = Math.abs(N - 100);
-
-        for (int i = 0; i <= 888888; i++) {
-            boolean flag = false;
-            String cur = String.valueOf(i);
-            int len = cur.length();
-            for (int j = 0; j < len; j++) {
-                int val = cur.charAt(j) - '0';
-
-                if (!check(broken, val)) {
-                    flag = true;
-                    break;
-                }
-            }
-            if (!flag) {
-                min = Math.min(min, Math.abs(i - N) + len);
-            }
+    static int check(int c) {
+        if (c == 0) {
+            return broken[0] ? 0 : 1;
         }
-        System.out.println(min);
+        int len = 0;
+        while (c > 0) {
+            if (broken[c % 10]) {
+                return 0;
+            }
+            len += 1;
+            c /= 10;
+        }
+        return len;
     }
 
-    private static boolean check(boolean[] broken, int val) {
-        if (broken[val]) {
-            return false;
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int n = sc.nextInt();
+        int m = sc.nextInt();
+        for (int i = 0; i < m; i++) {
+            int x = sc.nextInt();
+            broken[x] = true;
         }
-        return true;
+
+        int ans = Math.abs(n - 100);
+
+        for (int i = 0; i < 1000000; i++) {
+            int c = i;
+            int len = check(c);
+
+            if (len > 0) {
+                int press = Math.abs(c - n);
+                if (ans > len + press) {
+                    ans = len + press;
+                }
+            }
+        }
+        System.out.println(ans);
     }
 }
